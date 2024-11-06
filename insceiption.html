@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription à la Compétition</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="fonctions.js"></script>
+    <script>
+        function activer() {
+            const isChecked = document.getElementById("membre2Checkbox").checked;
+            const member2Fields = document.querySelectorAll(".membre2-field");
+            member2Fields.forEach(field => field.disabled = !isChecked);
+
+            if (!isChecked) {
+                member2Fields.forEach(field => field.value = "");
+            }
+        }
+
+        function activerBtn() {
+            const submitButton = document.getElementById("submitBtn");
+            submitButton.disabled = !document.getElementById("chekboxbtn").checked;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Inscription d'une Équipe</h2>
+        <form class="registration-form" method="post" action="inscription.php" onsubmit="return verif()" name="f1">
+            <section class="team-info">
+                <h3>Informations de l'Équipe</h3>
+                <label>Nom de l'Équipe:</label>
+                <input type="text" id="nomequipe" name="nomequipe" placeholder="Nom de l'équipe" required>
+                <label>Catégorie:</label>
+                <select id="categorie" name="categorie" required>
+                    <option>selectioner une Catégorie</option>
+                    <option value="Junior" selected>Junior (moins de 14 ans)</option>
+                    <option value="Senior">Senior (14-18 ans)</option>
+                </select>
+            </section>
+
+            <section class="coach-info">
+                <h3>Coach</h3>
+                <label>Nom:</label>
+                <input type="text" id="nomresponsable" name="nomresponsable" placeholder="Nom du Coach" required>
+                <label>Prénom:</label>
+                <input type="text" id="prenomresponsable" name="prenomresponsable" placeholder="Prénom du responsable" required>
+                <label>Date de Naissance:</label>
+                <input type="date" id="date_naissanceresponsable" name="date_naissanceresponsable" required>
+                <label>Téléphone:</label>
+                <input type="text" id="telresponsable" name="telresponsable" placeholder="Téléphone du responsable" required>
+                <label>Email:</label>
+                <input type="email" id="mailresponsable" name="mailresponsable" placeholder="Email du responsable" required>
+            </section>
+
+            <section class="member-info">
+                <h3>Membre 1 : Chef d'équipe</h3>
+                <label>Nom:</label>
+                <input type="text" id="nommembre1" name="nommembre1" placeholder="Nom" required>
+                <label>Prénom:</label>
+                <input type="text" id="prenommembre1" name="prenommembre1" placeholder="Prénom" required>
+                <label>Date de Naissance:</label>
+                <input type="date" id="date_naissancemembre1" name="date_naissancemembre1" required>
+                <label>Téléphone:</label>
+                <input type="text" id="telmembre1" name="telmembre1" placeholder="Téléphone" required>
+                <label>Email:</label>
+                <input type="email" id="mailmembre1" name="mailmembre1" placeholder="Email" required>
+            </section>
+
+            <section class="member2-info">
+                <label>
+                    <input type="checkbox" id="membre2Checkbox" onclick="activer()"> Ajouter un deuxième membre
+                </label>
+                <div class="membre2-fields">
+                    <label>Nom:</label>
+                    <input type="text" class="membre2-field" id="nommembre2" name="nommembre2" placeholder="Nom" disabled>
+                    <label>Prénom:</label>
+                    <input type="text" class="membre2-field" id="prenommembre2" name="prenommembre2" placeholder="Prénom" disabled>
+                    <label>Date de Naissance:</label>
+                    <input type="date" class="membre2-field" id="date_naissancemembre2" name="date_naissancemembre2" disabled>
+                    <label>Téléphone:</label>
+                    <input type="text" class="membre2-field" id="telmembre2" name="telmembre2" placeholder="Téléphone" disabled>
+                    <label>Email:</label>
+                    <input type="email" class="membre2-field" id="mailmembre2" name="mailmembre2" placeholder="Email" disabled>
+                </div>
+            </section>
+
+            <section class="robot-info">
+                <label>Description du robot:</label>
+                <textarea id="description" name="description" placeholder="Description du robot" required></textarea>
+            </section>
+
+            <section class="consent">
+                <label>
+                    <input type="checkbox" id="chekboxbtn" onclick="activerBtn()"> J'accepte tous les conditions de Yes 1.0 Tataouine
+                </label>
+            </section>
+
+            <section class="submit-section">
+                <input type="submit" id="submitBtn" name="s'incrire" value="s'inscrire" disabled>
+            </section>
+        </form>
+    </div>
+</body>
+</html>
